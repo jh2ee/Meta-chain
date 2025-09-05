@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  mdsvc:
+    build: ./api
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - mdsvc_data:/data
+    networks:
+      - quorum-net
+
+networks:
+  quorum-net:
+    external: true
+    name: quorum-dev-quickstart   # ← 실제 네트워크 이름과 맞춰주세요
+
+volumes:
+  mdsvc_data:
